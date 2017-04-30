@@ -1,0 +1,88 @@
+<!doctype html>
+
+<!--[if lt IE 7]><html <?php language_attributes(); ?> class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html <?php language_attributes(); ?> class="no-js lt-ie9 lt-ie8"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html <?php language_attributes(); ?> class="no-js lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!-->
+<html <?php language_attributes(); ?> class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+
+    <?php // force Internet Explorer to use the latest rendering engine available ?>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <title>
+            <?php wp_title(''); ?>
+        </title>
+
+        <?php // mobile meta (hooray!) ?>
+            <meta name="HandheldFriendly" content="True">
+            <meta name="MobileOptimized" content="320">
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+            <link rel="apple-touch-icon" href="<?php echo get_template_directory_uri(); ?>/library/images/apple-touch-icon.png">
+            <link rel="icon" href="<?php echo get_template_directory_uri(); ?>/favicon.png">
+            <!--[if IE]>
+			<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/favicon.ico">
+		<![endif]-->
+            <meta name="msapplication-TileColor" content="#f01d4f">
+            <meta name="msapplication-TileImage" content="<?php echo get_template_directory_uri(); ?>/library/images/win8-tile-icon.png">
+            <meta name="theme-color" content="#121212">
+
+            <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
+
+            <?php // wordpress head functions ?>
+                <?php wp_head(); ?>
+                    <?php // end of wordpress head ?>
+
+                        <?php // drop Google Analytics Here ?>
+                            <?php // end analytics ?>
+
+</head>
+
+<body <?php body_class(); ?> itemscope itemtype="http://schema.org/WebPage">
+
+    <div id="container">
+
+        <header id="header" class="header nav-item" role="banner" itemscope itemtype="http://schema.org/WPHeader">
+
+            <?php // to use a image just replace the bloginfo('name') with your img src and remove the surrounding <p> ?>
+                <div id="nav-item_0" data-link="page_0" class="logo"><img src="http://school.mosswimming.ru/wp-content/uploads/2017/04/logo.png"></div>
+
+                <nav role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+
+                    <a href="/" class="nav-item">Назад</a>
+
+                    <div class="nav-item-bar"></div>
+
+                </nav>
+
+
+
+        </header>
+
+
+        <div id="content">
+            <!--         Главная страница-->
+            <div class="page active">
+                <div class="page-content news">
+                    <?php if (have_posts()) : while (have_posts()) : the_post(); 
+														
+								get_template_part( 'post-formats/format', get_post_format() );
+						
+                        endwhile; endif; ?>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <?php wp_footer(); ?>
+
+</body>
+
+</html>
+<!-- end of site. what a ride! -->
